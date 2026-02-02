@@ -9,20 +9,12 @@ app.listen(port, () => {
 app.get("/", (req, res) => {
     res.send("You contacted at root path");
 });
-app.get("/apple", (req, res) => {
-    res.send("You contacted apple path");
-});
-app.get("/orange", (req, res) => {
-    res.send("You contacted orange path");
-});
 
-app.post("/", (req, res) => {
-    res.send("You sent a post request to root path");
-});
-
-app.get("/", (req, res) => {
-    res.status("404").send("This path does not exist");
-});
+app.get("/:userName/:id", (req, res) => {
+    let { userName, id } = req.params;
+    let htmlStr = `<h1>Welcome to the page of @${userName}</h1>`;
+    res.send(htmlStr)
+})
 
 // app.use((req, res) => {
 //     console.log("request received");
