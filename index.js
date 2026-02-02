@@ -14,7 +14,17 @@ app.get("/:userName/:id", (req, res) => {
     let { userName, id } = req.params;
     let htmlStr = `<h1>Welcome to the page of @${userName}</h1>`;
     res.send(htmlStr)
-})
+});
+
+app.get("/search", (req, res) => {
+    let { q } = req.query;
+    if (!q) {
+        res.send("Nothing searched")
+    }
+    let htmlQue = `<h1>Here are the searched results @${q}</h1>`;
+    res.send(htmlQue);
+});
+
 
 // app.use((req, res) => {
 //     console.log("request received");
